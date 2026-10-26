@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Godsworn</title>
+  <meta name="application-name" content="Godsworn">
+  <meta name="apple-mobile-web-app-title" content="Godsworn">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#1e130a">
+  <meta property="og:title" content="Godsworn - Mobile RTS">
+  <meta property="og:description" content="16-Bit Fantasy Mobile Real-Time Strategy">
+  <meta property="og:image" content="assets/app-thumbnail.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="assets/app-thumbnail.jpg">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css?v=6">
+</head>
+<body>
+  <div id="game-container">
+    <!-- Top Resource Bar -->
+    <header id="top-bar">
+      <div class="resource-item"><span class="icon gold-icon">🪙</span> GOLD: <span id="res-gold">4320</span></div>
+      <div class="resource-item"><span class="icon lumber-icon">🪵</span> LUMBER: <span id="res-lumber">2150</span></div>
+      <div class="resource-item"><span class="icon food-icon">🥩</span> <span id="res-food">1/10</span></div>
+      <div class="resource-item time-item"><span class="icon time-icon">⏱️</span> <span id="res-time">00:00</span></div>
+    </header>
+
+    <!-- Main Game Viewport -->
+    <main id="viewport-container">
+      <canvas id="game-canvas"></canvas>
+    </main>
+
+    <!-- Bottom Warcraft Style HUD -->
+    <footer id="bottom-hud">
+      <div id="hud-left-panel">
+        <div id="command-grid">
+          <button class="cmd-btn active" id="cmd-move" title="Move Command">
+            <span class="cmd-icon">👟</span>
+            <span class="cmd-label">Move</span>
+          </button>
+          <button class="cmd-btn" id="cmd-stop" title="Stop">
+            <span class="cmd-icon">🛑</span>
+            <span class="cmd-label">Stop</span>
+          </button>
+          <button class="cmd-btn disabled" id="cmd-attack" title="Attack">
+            <span class="cmd-icon">⚔️</span>
+            <span class="cmd-label">Attack</span>
+          </button>
+          <button class="cmd-btn disabled" id="cmd-build" title="Build">
+            <span class="cmd-icon">🔨</span>
+            <span class="cmd-label">Build</span>
+          </button>
+        </div>
+        <div id="selection-card">
+          <div id="unit-portrait">🛡️</div>
+          <div id="unit-info">
+            <div id="unit-name">No Selection</div>
+            <div id="unit-hp-bar-container">
+              <div id="unit-hp-bar"></div>
+            </div>
+            <div id="unit-stats">Tap unit or drag box</div>
+          </div>
+          <div id="queue-view" style="display: none;"></div>
+        </div>
+      </div>
+
+      <div id="hud-right-panel">
+        <!-- Minimap Preview -->
+        <div id="minimap-container">
+          <canvas id="minimap-canvas"></canvas>
+          <div id="faction-tag">HEAVENLY HOST</div>
+        </div>
+        <!-- Touch Mode Toggle Button -->
+        <button id="mode-toggle-btn" class="mode-pan">
+          <span id="mode-icon-symbol">✋</span>
+          <span id="mode-text">PAN MODE</span>
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/config.js?v=6"></script>
+  <script src="js/assetManager.js?v=6"></script>
+  <script src="js/world.js?v=6"></script>
+  <script src="js/factions.js?v=6"></script>
+  <script src="js/sprites.js?v=6"></script>
+  <script src="js/camera.js?v=6"></script>
+  <script src="js/map.js?v=6"></script>
+  <script src="js/building.js?v=6"></script>
+  <script src="js/farm.js?v=6"></script>
+  <script src="js/barracks.js?v=6"></script>
+  <script src="js/sawmill.js?v=6"></script>
+  <script src="js/goldmine.js?v=6"></script>
+  <script src="js/pathfinding.js?v=6"></script>
+  <script src="js/projectile.js?v=6"></script>
+  <script src="js/unit.js?v=6"></script>
+  <script src="js/touchController.js?v=6"></script>
+  <script src="js/ui.js?v=6"></script>
+  <script src="js/main.js?v=6"></script>
+</body>
+</html>

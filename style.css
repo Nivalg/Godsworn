@@ -1,0 +1,347 @@
+/* Godsworn - Warcraft Style Mobile RTS CSS */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: none;
+  font-family: 'Courier New', Courier, monospace, sans-serif;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  background-color: #0d0905;
+  color: #e0d0b0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+}
+
+#game-container {
+  width: 100%;
+  max-width: 480px;
+  height: 100%;
+  height: 100dvh;
+  max-height: 960px;
+  display: flex;
+  flex-direction: column;
+  background: #1e130a;
+  border: 4px solid #4a3018;
+  box-shadow: 0 0 20px rgba(0,0,0,0.9);
+  position: relative;
+}
+
+/* Top Resource Bar */
+#top-bar {
+  height: 38px;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, #4a321a 0%, #2a1a0c 100%);
+  border-bottom: 3px solid #6b4c2b;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 8px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #f7e09e;
+  text-shadow: 1px 1px 0 #000;
+  z-index: 10;
+}
+
+.resource-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.resource-item .icon {
+  font-size: 14px;
+}
+
+/* Main Canvas Viewport */
+#viewport-container {
+  flex: 1 1 auto;
+  min-height: 200px;
+  position: relative;
+  overflow: hidden;
+  background-color: #1b3617;
+}
+
+#game-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  cursor: crosshair;
+}
+
+#game-status-overlay {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid #7c5c36;
+  padding: 4px 12px;
+  font-size: 11px;
+  color: #a8cf6a;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* Bottom HUD */
+#bottom-hud {
+  height: 180px;
+  background: #2b1b0e linear-gradient(180deg, #3d2716 0%, #1f1208 100%);
+  border-top: 4px solid #6b4c2b;
+  display: flex;
+  padding: 6px;
+  gap: 6px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
+  z-index: 10;
+}
+
+#hud-left-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Commands Grid */
+#command-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  height: 48px;
+}
+
+.cmd-btn {
+  background: linear-gradient(180deg, #573e27 0%, #302012 100%);
+  border: 2px solid #825d3a;
+  border-radius: 4px;
+  color: #ffd89b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 2px;
+  font-size: 10px;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.cmd-btn:active, .cmd-btn.active {
+  background: linear-gradient(180deg, #825d3a 0%, #47301c 100%);
+  border-color: #ffd89b;
+  box-shadow: inset 0 0 4px rgba(255, 216, 155, 0.6);
+}
+
+.cmd-btn.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(80%);
+}
+
+.cmd-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* Selection Info Card */
+#selection-card {
+  flex: 1;
+  background: #140d07;
+  border: 2px solid #4a3421;
+  border-radius: 4px;
+  padding: 6px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+#unit-portrait {
+  width: 44px;
+  height: 44px;
+  background: #2b1d11;
+  border: 2px solid #6e4e31;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.8);
+}
+
+#unit-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+#unit-name {
+  font-size: 12px;
+  font-weight: bold;
+  color: #ffde9e;
+  text-shadow: 1px 1px 0 #000;
+}
+
+#unit-hp-bar-container {
+  width: 100%;
+  height: 8px;
+  background: #2b0000;
+  border: 1px solid #572020;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+#unit-hp-bar {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #2ecc71, #27ae60);
+  transition: width 0.2s ease;
+}
+
+#unit-stats {
+  font-size: 10px;
+  color: #b5a48b;
+}
+
+#queue-view {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 2px;
+}
+
+.queue-card-slot {
+  flex: 1;
+  max-width: 54px;
+  height: 64px;
+  background: linear-gradient(180deg, #2b1d11 0%, #170e07 100%);
+  border: 2px solid #7c5c36;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 2px;
+  cursor: pointer;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
+  position: relative;
+  transition: all 0.15s ease;
+}
+
+.queue-card-slot:hover {
+  border-color: #e74c3c;
+}
+
+.queue-card-slot.active {
+  border-color: #2ecc71;
+  box-shadow: 0 0 8px rgba(46, 204, 113, 0.7);
+}
+
+.queue-card-icon {
+  font-size: 26px;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.queue-card-timer {
+  font-size: 9px;
+  color: #2ecc71;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.queue-card-progress {
+  width: 100%;
+  height: 4px;
+  background: #1a0000;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 2px;
+}
+
+.queue-card-progress-fill {
+  height: 100%;
+  background: #2ecc71;
+}
+
+/* Bottom Right Panel (Minimap & Mode Toggle) */
+#hud-right-panel {
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#minimap-container {
+  width: 100%;
+  height: 110px;
+  background: #090e09;
+  border: 2px solid #4a3421;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+#minimap-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#faction-tag {
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 8px;
+  font-weight: bold;
+  background: rgba(0,0,0,0.7);
+  color: #ffd89b;
+  padding: 1px 0;
+}
+
+/* Mode Toggle Button */
+#mode-toggle-btn {
+  height: 48px;
+  background: linear-gradient(180deg, #2b5735 0%, #17361e 100%);
+  border: 2px solid #489e5a;
+  border-radius: 6px;
+  color: #d4f7dc;
+  font-weight: bold;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  transition: all 0.15s ease;
+}
+
+#mode-toggle-btn:active {
+  transform: scale(0.96);
+}
+
+#mode-toggle-btn.mode-box {
+  background: linear-gradient(180deg, #7c4820 0%, #47260c 100%);
+  border-color: #c9793c;
+  color: #ffe6cf;
+}
