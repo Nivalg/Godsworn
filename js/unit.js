@@ -1107,5 +1107,41 @@ class Unit {
     ctx.fillStyle = '#5c3a1e';
     ctx.fillRect(sx + 23, sy + 19, 2, 4);
   }
+
+  renderBaldwinProcedural(ctx, sx, sy) {
+    // Ground Shadow
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.45)';
+    ctx.beginPath();
+    ctx.ellipse(sx + 24, sy + 42, 12, 5, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Royal Blue Cape
+    ctx.fillStyle = '#15438c';
+    ctx.fillRect(sx + 12, sy + 16, 24, 24);
+
+    // Silver Plate Boots
+    ctx.fillStyle = '#7f8c8d';
+    ctx.fillRect(sx + 16, sy + 34, 6, 8);
+    ctx.fillRect(sx + 26, sy + 34, 6, 8);
+
+    // White & Gold Tabard over Plate Armor
+    ctx.fillStyle = '#ecf0f1';
+    ctx.fillRect(sx + 15, sy + 16, 18, 19);
+    ctx.fillStyle = '#d4af37'; // Gold Cross on chest
+    ctx.fillRect(sx + 23, sy + 18, 2, 14);
+    ctx.fillRect(sx + 19, sy + 22, 10, 2);
+
+    // Silver Mask & Golden Crown
+    ctx.fillStyle = '#bdc3c7';
+    ctx.fillRect(sx + 18, sy + 6, 12, 10);
+    ctx.fillStyle = '#f1c40f';
+    ctx.fillRect(sx + 17, sy + 3, 14, 4);
+
+    // Heroic Greatsword
+    ctx.fillStyle = '#ecf0f1';
+    ctx.fillRect(sx + 35, sy + 6, 3, 22);
+    ctx.fillStyle = '#f1c40f';
+    ctx.fillRect(sx + 32, sy + 24, 9, 3);
+  }
 }
 window.Unit = Unit;

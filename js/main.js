@@ -185,7 +185,11 @@ function initGame() {
     // 4. Units & Projectiles (Filter hostile enemy units to only render when in active player vision)
     units.forEach(unit => {
       if (!unit.isEnemy || gameMap.isTileVisible(unit.tileCol, unit.tileRow)) {
-        unit.render(ctx, camera);
+        try {
+          unit.render(ctx, camera);
+        } catch (err) {
+          console.error('Unit render error:', err);
+        }
       }
     });
     projectiles.forEach(p => p.render(ctx, camera));
@@ -211,10 +215,16 @@ function startGame() {
   if (typeof AssetManager !== 'undefined' && AssetManager.init) {
     AssetManager.init();
   }
-  // Start the game loop immediately so mobile never sees a blank/black canvas while sprite sheets stream in
-  safeInitGame();
+  // Wait for sprite sheets to load (or fallback after 1.5s if offline/slow) and also render procedural fallback safely
+  const fallbackTimer = setTimeout(safeInitGame, 1500);
   if (typeof AssetManager !== 'undefined' && AssetManager.loadAll) {
-    AssetManager.loadAll(() => {});
+    AssetManager.loadAll(() => {
+      clearTimeout(fallbackTimer);
+      safeInitGame();
+    });
+  } else {
+    clearTimeout(fallbackTimer);
+    safeInitGame();
   }
 }
 
